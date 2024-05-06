@@ -16,7 +16,7 @@ apt-get update && apt-get install jq
 pip install toot
 toot login
 
-# NOTE: watch for "Error: Too many requests" failures. You may have break up
+# NOTE: watch for "Error: Too many requests" failures. You may have to break up
 # following.json into smaller files.
 cat following.json |
   jq -r .text_post_app_text_post_app_following[].string_list_data[].value |
