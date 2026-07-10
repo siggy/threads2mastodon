@@ -23,7 +23,7 @@ cat following.json |
   sort |
   xargs -I {} bash -c '
     if toot whois "{}@threads.net" > /dev/null 2>&1; then
-      toot follow "@{}@threads.net";
+      toot follow "{}@threads.net";
     else
       echo "{} is not ActivityPub enabled";
     fi'
