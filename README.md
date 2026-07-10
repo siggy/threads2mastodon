@@ -22,13 +22,9 @@ cat following.json |
   jq -r .text_post_app_text_post_app_following[].string_list_data[].value |
   sort |
   xargs -I {} bash -c '
-    response=$(
-      toot search --json "@{}@threads.net" |
-      jq -r ".accounts[0].acct // empty"
-    ) &&
-    if [ -z "$response" ]; then
-      echo "{} is not ActivityPub enabled";
-    else
+    if toot whois "{}@threads.net" > /dev/null 2>&1; then
       toot follow "@{}@threads.net";
+    else
+      echo "{} is not ActivityPub enabled";
     fi'
 ```
